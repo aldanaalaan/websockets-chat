@@ -57,3 +57,12 @@ socket.on("chat:escribiendo", (data) => {
 socket.on("chat:escribiendo:stop", (data) => {
     actions.innerHTML = null;
 });
+
+const Prueba = (Numero) => {
+    for (let index = 0; index < Numero; index++) {
+        socket.emit("chat:message", {
+            username: "Test",
+            message: "Hello World!",
+        });
+    }
+};
