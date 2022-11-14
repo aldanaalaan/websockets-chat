@@ -29,6 +29,18 @@ message.addEventListener("blur", () => {
         username: username.value,
     });
 });
+message.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+        if (username.value.trim() != "" && message.value.trim() != "") {
+            socket.emit("chat:message", {
+                username: username.value,
+                message: message.value,
+            });
+            message.value = "";
+            message.blur();
+        }
+    }
+});
 
 socket.on("chat:message", (data) => {
     output.innerHTML += `<p ${
